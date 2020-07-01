@@ -22,4 +22,9 @@ ATTR_P   equ $5c8d ; https://skoolkid.github.io/rom/asm/5C8D.html
     ld      bc, $9c05   ; load 156 sectors of data
     call    $3d13       ;
 
+; Clean up TR-DOS leftovers
+; Without this, there will be animation artifacts when playing thimblerig
+    ld      hl, $5b00
+    ld      (hl), 0
+
     jp      $8000
